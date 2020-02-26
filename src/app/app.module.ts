@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconComponent } from './custom-component/icon/icon.component';
+import { CustomRadioComponent } from './custom-component/custom-radio/custom-radio.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { IconComponent } from './custom-component/icon/icon.component';
     ScheduleContentComponent,
     ScheduleRowComponent,
     IconComponent,
+    CustomRadioComponent,
   ],
   imports: [
     BrowserModule,

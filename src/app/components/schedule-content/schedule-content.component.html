@@ -1,1 +1,7 @@
-<p>schedule-content works!</p>
+<div class="contant-out-frame">
+  <div class="contant-frame">
+    <ng-container *ngFor="let row as getRows()">
+      <app-schedule-row [param]="row"></app-schedule-row>
+    </ng-container>
+  </div>
+</div>
