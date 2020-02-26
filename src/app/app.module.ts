@@ -4,24 +4,30 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ScheduleBoardComponent } from './components/schedule-board/schedule-board.component';
+import { ScheduleContentComponent } from './components/schedule-content/schedule-content.component';
+import { ScheduleRowComponent } from './components/schedule-row/schedule-row.component';
 import { RouterModule } from '@angular/router';
-import { ScheduleBoardComponent } from './schedule-board/schedule-board.component';
-import { ScheduleContentComponent } from './schedule-content/schedule-content.component';
-import { ScheduleRowComponent } from './schedule-row/schedule-row.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
+    ScheduleComponent,
     ScheduleBoardComponent,
     ScheduleContentComponent,
-    ScheduleRowComponent
+    ScheduleRowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: "", component: MainComponent }
+      { path: "", component: ScheduleComponent }
     ])
   ],
   providers: [],
