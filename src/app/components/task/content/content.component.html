@@ -1,0 +1,7 @@
+<div class="contant-out-frame">
+  <div class="contant-frame">
+    <ng-container *ngFor="let row of getRows()">
+      <app-task-row [task]="row" (endEditRow)="addRow()"></app-task-row>
+    </ng-container>
+  </div>
+</div>

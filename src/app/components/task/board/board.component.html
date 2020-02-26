@@ -3,7 +3,7 @@
 <mat-tab-group class="inline-block">
   <ng-container *ngFor="let tab of tabs">
     <mat-tab [label]="tab.title">
-      <app-schedule-content></app-schedule-content>
+      <app-task-content [content]="tab"></app-task-content>
     </mat-tab>
   </ng-container>
 </mat-tab-group>

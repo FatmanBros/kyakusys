@@ -5,4 +5,7 @@ export class IconConstants {
 
   /** プラス（丸） */
   public static plus_circle = ["fas", "fa-plus-circle"];
+
+  /** エディット */
+  public static edit = ["far", "fa-edit"];
 }

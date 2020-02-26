@@ -1,0 +1,10 @@
+<div class="row-frame">
+  <ng-template *ngIf="edithing; else hideContent">
+    <input ([ngModel])="task.title" placeholder="テキストを入力して、Enterで追加" class="task-form" (keyup)="onKey($event)"/>
+  </ng-template>
+  <ng-template #hideContent>
+    <ky-icon [icon]="icons.edit" (onClick)="edit()"></ky-icon>
+    <p>task.title</p>
+    <ky-custom-radio [buttons]="radioButtons"></ky-custom-radio>
+  </ng-template>
+</div>
