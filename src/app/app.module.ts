@@ -11,6 +11,7 @@ import { ScheduleRowComponent } from './components/schedule-row/schedule-row.com
 import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IconComponent } from './custom-component/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScheduleBoardComponent,
     ScheduleContentComponent,
     ScheduleRowComponent,
+    IconComponent,
   ],
   imports: [
     BrowserModule,

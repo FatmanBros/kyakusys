@@ -1,7 +1,9 @@
 <!-- タブ -->
-<span class="icon-plus icon"></span>
-<mat-tab-group>
-  <mat-tab label="First"> Content 1 </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>  
+<ky-icon [icon]="icons.pluss" class="add-icon" (onClick)="addTab()"></ky-icon>
+<mat-tab-group class="inline-block">
+  <ng-container *ngFor="let tab of tabs">
+    <mat-tab [label]="tab.title">
+      <app-schedule-content></app-schedule-content>
+    </mat-tab>
+  </ng-container>
 </mat-tab-group>

@@ -11,12 +11,10 @@ p {
   margin: 0;
 }
 
-.icon {
-  width: 2rem;
-  height: 2rem;
+.inline-block {
+  display: inline-block;
 }
 
 @import './styles/tab.styles.scss';
 
-// アイコン用CSS
-@import './styles/icons.styles.scss';
+@import './styles/icon.style.scss';
