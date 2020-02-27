@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TaskTabParams, TaskParams } from 'src/app/params/task.params';
+import { TaskTabParams, TaskContent } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
 
 @Component({
@@ -10,22 +10,22 @@ import { TaskConstants } from 'src/app/constants/task.constants';
 export class TaskContentComponent implements OnInit {
 
   @Input()
-  public content: TaskTabParams;
+  public tab: TaskTabParams;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public getRows(): TaskParams[] {
-    if (!this.content) {
+  public getRows(): TaskContent[] {
+    if (!this.tab) {
       return [];
     }
 
-    return this.content.tasks;
+    return this.tab.contents;
   }
 
   public addRow() {
-    this.content.tasks.push(TaskConstants.defaultTask);
+    this.tab.contents.push(TaskConstants.defaultTask);
   }
 }

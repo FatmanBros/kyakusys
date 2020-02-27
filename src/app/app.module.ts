@@ -8,11 +8,11 @@ import { TaskComponent } from './components/task/task.component';
 import { TaskBoardComponent } from './components/task/board/board.component';
 import { TaskContentComponent } from './components/task/content/content.component';
 import { TaskRowComponent } from './components/task/row/row.component';
-import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconComponent } from './custom-component/icon/icon.component';
 import { CustomRadioComponent } from './custom-component/custom-radio/custom-radio.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,11 @@ import { CustomRadioComponent } from './custom-component/custom-radio/custom-rad
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot([
-      { path: "", component: TaskComponent }
-    ])
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

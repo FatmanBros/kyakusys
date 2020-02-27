@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { TaskParams } from 'src/app/params/task.params';
+import { TaskContent } from 'src/app/params/task.params';
 import { IconConstants } from 'src/app/constants/icon.constants';
 
 @Component({
@@ -11,11 +11,19 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   public icons: typeof IconConstants = IconConstants;
 
-  @Input()
   public edithing: boolean = true;
 
   @Input()
-  public task: TaskParams;
+  public task: TaskContent;
+
+  private _taskTitle: string;
+  public set taskTitle(val) {
+    this._taskTitle = val;
+    this.task.title = val;
+  }
+  public get taskTitle() {
+    return this._taskTitle;
+  }
 
   public radioButtons = [
     { label: "未着手", color: "#81ecec" },
@@ -38,19 +46,21 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.edithing = true;
-  }
-
-  public edit() {
-
+    this.edithing = false;
   }
 
   @Output()
   public endEditRow: EventEmitter<null> = new EventEmitter<null>();
 
   public onKey(event) {
-    if (event) {
+    if (event.key === 'Enter' && event.code === 'Enter') {
+      if (!event.currentTarget.value) {
+        return;
+      }
+
       this.endEditRow.emit();
+      
+      this.edithing = false;
     }
   }
 }

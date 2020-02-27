@@ -7,13 +7,13 @@ export class TaskTabParams {
 
   public themaColor?: string;
 
-  public tasks?: TaskParams[];
+  public contents?: TaskContent[];
 }
 
-export class TaskParams {
+export class TaskContent {
   public title: string;
 
   public type: TaskTypeParams;
 
-  public child?: TaskParams[];
+  public child?: TaskContent[];
 }
