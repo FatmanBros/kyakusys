@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef } from '@angular/core';
 import { TaskContent } from 'src/app/params/task.params';
 import { IconConstants } from 'src/app/constants/icon.constants';
 
@@ -32,7 +32,9 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
     { label: "完了", color: "#636e72" },
   ];
 
-  constructor() { }
+  constructor(
+    private element: ElementRef
+  ) { }
 
   ngOnInit(): void {
   }
@@ -62,5 +64,12 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
       
       this.edithing = false;
     }
+  }
+
+  public onEditClick() {
+    this.edithing = true;
+
+    let input = this.element.nativeElement.querySelector('input');
+    input.focus();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { TaskTabParams, TaskContent } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
 
@@ -9,10 +9,15 @@ import { TaskConstants } from 'src/app/constants/task.constants';
 })
 export class TaskContentComponent implements OnInit {
 
+  @ViewChild('content')
+  public content: ElementRef;  
+
   @Input()
   public tab: TaskTabParams;
 
-  constructor() { }
+  constructor(
+    private detector: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +30,24 @@ export class TaskContentComponent implements OnInit {
     return this.tab.contents;
   }
 
-  public addRow() {
+  public addRow(i) {
+    // 最後の行のときだけ追加
+    if (i < this.tab.contents.length - 1) {
+      return;
+    }  
     this.tab.contents.push(TaskConstants.defaultTask);
+
+    this.detector.detectChanges();
+
+    // 最後の行を選択
+    this.selectLastRow();
+  }
+
+  public selectLastRow() {
+    let tasks = this.content.nativeElement.querySelectorAll('app-task-row');
+    let lastItem = tasks[tasks.length - 1];
+
+    let task = lastItem.querySelector('input');
+    task.focus();
   }
 }

@@ -5,7 +5,18 @@
 
   background-color: white;
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+
+  transition: 0.5s;
 }
+.row-frame:hover {
+  background-color: rgb(211, 241, 255) ;
+  transition: 0.5s;
+}
+.row-frame.edithing {
+  background-color: rgb(255, 253, 226) ;
+  transition: 0.5s;
+}
+
 .content-frame {
   align-self: center;
 }
