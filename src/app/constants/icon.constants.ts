@@ -8,4 +8,7 @@ export class IconConstants {
 
   /** エディット */
   public static edit = ["far", "fa-edit"];
+
+  /** クローズ */
+  public static close = ["far", "fa-window-close"];
 }

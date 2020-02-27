@@ -1,9 +1,13 @@
 .row-frame {
+  display: flex;
   margin-left: 1rem;
   height: 3rem;
 
   background-color: white;
-  border-radius: 0.5rem;
+  filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
+}
+.content-frame {
+  align-self: center;
 }
 
 $width: 30rem;
@@ -16,6 +20,10 @@ $width: 30rem;
 
   border: none;
   border-bottom: gray solid 1px;
+}
+
+.left-icon {
+  margin: 0 1rem;
 }
 
 .task {

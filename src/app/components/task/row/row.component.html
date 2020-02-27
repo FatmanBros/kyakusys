@@ -1,10 +1,13 @@
 <div class="row-frame">
-  <ng-container *ngIf="edithing">
-    <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form" (keyup)="onKey($event)" />
-  </ng-container>
-  <ng-container *ngIf="!edithing">
-    <ky-icon class="inline-block" [icon]="icons.edit" (onClick)="edithing = true"></ky-icon>
-    <p class="task inline-block">{{taskTitle}}</p>
-    <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
-  </ng-container>
+  <div class="content-frame">
+    <ng-container *ngIf="edithing">
+      <ky-icon *ngIf="taskTitle" class="left-icon inline-block" [icon]="icons.close" (onClick)="edithing = false"></ky-icon>
+      <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block" (keyup)="onKey($event)" />
+    </ng-container>
+    <ng-container *ngIf="!edithing">
+      <ky-icon class="left-icon inline-block" [icon]="icons.edit" (onClick)="edithing = true"></ky-icon>
+      <p class="task inline-block">{{taskTitle}}</p>
+      <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
+    </ng-container>
+  </div>
 </div>
