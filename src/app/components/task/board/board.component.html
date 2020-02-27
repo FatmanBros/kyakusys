@@ -1,0 +1,7 @@
+<!-- タブ -->
+<ky-icon [icon]="icons.plus_circle" class="add-icon" (onClick)="addTab()"></ky-icon>
+<mat-tab-group #matTab class="inline-block">
+  <mat-tab *ngFor="let tab of tabs" [label]="tab.title">
+    <app-task-content [tab]="tab"></app-task-content>
+  </mat-tab>
+</mat-tab-group>

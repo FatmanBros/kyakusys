@@ -1,0 +1,19 @@
+.row-frame {
+  margin-left: 1rem;
+  height: 3rem;
+
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+$width: 30rem;
+.task-form {
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 1rem;
+
+  width: $width;
+  max-width: $width;
+
+  border: none;
+  border-bottom: gray solid 1px;
+}

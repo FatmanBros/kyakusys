@@ -3,14 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './components/main/main.component';
+import { TaskComponent } from './components/task/task.component';
+import { TaskBoardComponent } from './components/task/board/board.component';
+import { TaskContentComponent } from './components/task/content/content.component';
+import { TaskRowComponent } from './components/task/row/row.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IconComponent } from './custom-component/icon/icon.component';
+import { CustomRadioComponent } from './custom-component/custom-radio/custom-radio.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    TaskComponent,
+    TaskBoardComponent,
+    TaskContentComponent,
+    TaskRowComponent,
+    IconComponent,
+    CustomRadioComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

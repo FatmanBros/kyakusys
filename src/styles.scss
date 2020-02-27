@@ -1,1 +1,22 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 /* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 12px;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+@import './styles/tab.styles.scss';
+
+@import './styles/icon.style.scss';

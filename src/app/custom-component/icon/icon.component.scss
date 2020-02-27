@@ -1,0 +1,31 @@
+[class^="svg-inline"].pointer-icon {
+  cursor: pointer;
+}
+
+/**
+ * サイズ
+ */
+ $small: 1.5rem;
+[class^="svg-inline"].small {
+  width: $small;
+  height: $small;
+}
+
+$middle: 2rem;
+[class^="svg-inline"].middle {
+  width: $middle;
+  height: $middle;
+}
+
+$large: 3rem;
+[class^="svg-inline"].large {
+  width: $large;
+  height: $large;
+}
+
+/**
+ * カラーバリエーション
+ */
+[class^="svg-inline"].gray {
+  color: #aaa;
+}
