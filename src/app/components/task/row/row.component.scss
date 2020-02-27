@@ -17,3 +17,9 @@ $width: 30rem;
   border: none;
   border-bottom: gray solid 1px;
 }
+
+.task {
+  margin: 0 1rem;
+  border-bottom: 1px solid #999;
+  width: $width;
+}

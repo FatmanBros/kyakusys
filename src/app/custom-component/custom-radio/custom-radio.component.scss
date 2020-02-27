@@ -1,3 +1,15 @@
 .radio-button {
   margin-left: 1rem;
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.8rem;
+
+  cursor: pointer;
+
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.radio-button.active {
+  opacity: 1;
+  transition: 0.2s;
 }

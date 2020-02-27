@@ -1,3 +1,4 @@
-<ng-container *ngFor="let button of buttons">
-  <button  class="radio-button inline-block" [ngStyle]="{'color': button.color}">{{button.label}}</button>
+<ng-container *ngFor="let button of buttons; index as i">
+  <span class="radio-button" [ngClass]="{'active': i === selectedIndex}"
+    [ngStyle]="{'background-color': button.color}" (click)="onClick(i)">{{button.label}}</span>
 </ng-container>
