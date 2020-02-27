@@ -14,6 +14,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   public edithing: boolean = true;
 
+  @Input()
   public nestedCount: number = 0;
 
   @Input()
@@ -72,6 +73,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   public onEditClick() {
     this.edithing = true;
+    this.detector.detectChanges();
 
     let input = this.element.nativeElement.querySelector('input');
     input.focus();
@@ -101,5 +103,16 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
     let task = lastItem.querySelector('input');
     task.focus();
+  }
+
+
+  @Output()
+  public deleteOnClick: EventEmitter<null> = new EventEmitter<null>();
+  public onDeleteClick() {
+    this.deleteOnClick.emit();
+  }
+
+  public onChildDelete(i) {
+
   }
 }

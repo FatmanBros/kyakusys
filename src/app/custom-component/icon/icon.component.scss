@@ -27,5 +27,22 @@ $large: 3rem;
  * カラーバリエーション
  */
 [class^="svg-inline"].gray {
-  color: #aaa;
+  color: #666;
+}
+
+[class^="svg-inline"].red {
+  color: red;
+}
+
+/**
+ * アクティブ時の挙動
+ */
+[class^="svg-inline"] {
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+[class^="svg-inline"]:hover {
+  opacity: 0.8;
+  transition: 0.2s;
 }

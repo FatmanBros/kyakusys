@@ -1,19 +1,51 @@
 <div class="row-frame" [ngClass]="{'edithing': edithing}">
   <div class="content-frame">
-    <ng-container *ngIf="edithing">
-      <ky-icon *ngIf="taskTitle" class="icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
-      </ky-icon>
-      <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
-        (keyup)="onKey($event)" />
-    </ng-container>
+    <!-- ネスト表現 -->
+    <div class="nested" *ngFor="let n of nestedCount| range; index as i">
+      <span style="font-size: 1.5rem;"*ngIf="i === (nestedCount - 1)">↳</span>
+    </div>
+    <!-- エディットアイコン -->
+    <div class="icon-area">
+      <ng-container *ngIf="edithing">
+        <ky-icon *ngIf="taskTitle" class="icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
+        </ky-icon>
+      </ng-container>
+      <ng-container *ngIf="!edithing">
+        <ky-icon class="icon inline-block" [icon]="icons.edit" (onClick)="onEditClick()"></ky-icon>
+      </ng-container>
+    </div>
+
+    <!-- タスクタイトル -->
+    <div class="task-area">
+      <ng-container *ngIf="edithing">
+        <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
+          (keyup)="onKey($event)" />
+      </ng-container>
+      <ng-container *ngIf="!edithing">
+        <p class="task inline-block">{{taskTitle}}</p>
+      </ng-container>
+    </div>
+
+    <!-- その他 -->
     <ng-container *ngIf="!edithing">
-      <ky-icon class="icon inline-block" [icon]="icons.edit" (onClick)="onEditClick()"></ky-icon>
-      <p class="task inline-block">{{taskTitle}}</p>
-      <ky-icon *ngIf="!task.child || !task.child.length" class="icon inline-block" [icon]="icons.fork" (onClick)="onForkClick()"></ky-icon>
-      <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
+      <div class="user-area">
+        <ky-icon class="icon inline-block" [icon]="icons.user_circle"></ky-icon>
+      </div>
+      <div class="custom-area">
+        <ky-icon *ngIf="!task.child || !task.child.length" class="icon inline-block" [icon]="icons.fork"
+          (onClick)="onForkClick()"></ky-icon>
+      </div>
+      <div class="custom-area">
+        <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
+      </div>
+      <div class="space"></div>
+      <div class="end-area">
+        <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
+      </div>
     </ng-container>
   </div>
   <div #child>
-    <app-task-row *ngFor="let child of task.child; index as i" [task]="child" (endEditRow)="addChildRow(i)"></app-task-row>
+    <app-task-row *ngFor="let child of task.child; index as i" [task]="child" [nestedCount]="nestedCount + 1"
+      (endEditRow)="addChildRow(i)" (deleteOnClick)="onChildDelete(i)"></app-task-row>
   </div>
 </div>

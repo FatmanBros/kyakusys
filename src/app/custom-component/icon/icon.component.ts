@@ -17,7 +17,7 @@ export class IconComponent implements OnInit, AfterViewInit {
   public size: 'small' | 'middle' | 'large' = 'small';
 
   @Input()
-  public color:IconColor = IconColor.gray;
+  public color: IconColor = IconColor.gray;
 
   public getClasses() {
     let classes = [];

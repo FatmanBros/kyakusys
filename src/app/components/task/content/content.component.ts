@@ -50,4 +50,8 @@ export class TaskContentComponent implements OnInit {
     let task = lastItem.querySelector('input');
     task.focus();
   }
+
+  public onChildDelete(i) {
+    this.tab.contents = this.tab.contents.filter((_, index) => index !== i);
+  }
 }

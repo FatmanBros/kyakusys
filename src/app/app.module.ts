@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconComponent } from './custom-component/icon/icon.component';
 import { CustomRadioComponent } from './custom-component/custom-radio/custom-radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RangePipe } from './pipe/range.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TaskRowComponent,
     IconComponent,
     CustomRadioComponent,
+    RangePipe,
   ],
   imports: [
     BrowserModule,

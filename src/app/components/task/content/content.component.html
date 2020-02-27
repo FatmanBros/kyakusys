@@ -1,5 +1,7 @@
 <div class="contant-out-frame">
   <div #content class="contant-frame">
-    <app-task-row *ngFor="let task of getRows(); index as i" [task]="task" (endEditRow)="addRow(i)"></app-task-row>
+    <div *ngFor="let task of getRows(); index as i" class="node-frame">
+      <app-task-row [task]="task" (endEditRow)="addRow(i)" (deleteOnClick)="onChildDelete(i)"></app-task-row>
+    </div>
   </div>
 </div>

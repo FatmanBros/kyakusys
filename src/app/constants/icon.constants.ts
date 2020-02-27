@@ -14,4 +14,16 @@ export class IconConstants {
 
   /** フォーク */
   public static fork = ["fas", "fa-share-alt"];
+
+  /** バツ印 */
+  public static cross = ["far", "fa-times-circle"];
+  
+  /** ゴミ箱 */
+  public static trash = ["fas", "fa-trash-alt"];
+
+  /** ユーザー */
+  public static user = ["fas", "fa-user"];
+
+  /** ユーザー（丸） */
+  public static user_circle = ["far", "fa-user-circle"];
 }
