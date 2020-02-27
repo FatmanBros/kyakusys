@@ -113,6 +113,6 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   }
 
   public onChildDelete(i) {
-
+    this.task.child = this.task.child.filter((_, index) => index !== i);
   }
 }

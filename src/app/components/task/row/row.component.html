@@ -2,7 +2,7 @@
   <div class="content-frame">
     <!-- ネスト表現 -->
     <div class="nested" *ngFor="let n of nestedCount| range; index as i">
-      <span style="font-size: 1.5rem;"*ngIf="i === (nestedCount - 1)">↳</span>
+      <span style="font-size: 1.5rem;" *ngIf="i === (nestedCount - 1)">↳</span>
     </div>
     <!-- エディットアイコン -->
     <div class="icon-area">
@@ -44,12 +44,11 @@
 
       <!-- スペース -->
       <div class="space"></div>
-
-      <!-- 削除ボタン -->
-      <div class="end-area">
-        <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
-      </div>
     </ng-container>
+    <!-- 削除ボタン -->
+    <div *ngIf="!edithing || nestedCount" class="end-area">
+      <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
+    </div>
   </div>
   <div #child>
     <app-task-row *ngFor="let child of task.child; index as i" [task]="child" [nestedCount]="nestedCount + 1"
