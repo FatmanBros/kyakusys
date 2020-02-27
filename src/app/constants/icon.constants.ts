@@ -11,4 +11,7 @@ export class IconConstants {
 
   /** クローズ */
   public static close = ["far", "fa-window-close"];
+
+  /** フォーク */
+  public static fork = ["fas", "fa-share-alt"];
 }

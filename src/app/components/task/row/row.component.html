@@ -1,15 +1,19 @@
 <div class="row-frame" [ngClass]="{'edithing': edithing}">
   <div class="content-frame">
     <ng-container *ngIf="edithing">
-      <ky-icon *ngIf="taskTitle" class="left-icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
+      <ky-icon *ngIf="taskTitle" class="icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
       </ky-icon>
       <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
         (keyup)="onKey($event)" />
     </ng-container>
     <ng-container *ngIf="!edithing">
-      <ky-icon class="left-icon inline-block" [icon]="icons.edit" (onClick)="onEditClick()"></ky-icon>
+      <ky-icon class="icon inline-block" [icon]="icons.edit" (onClick)="onEditClick()"></ky-icon>
       <p class="task inline-block">{{taskTitle}}</p>
+      <ky-icon *ngIf="!task.child || !task.child.length" class="icon inline-block" [icon]="icons.fork" (onClick)="onForkClick()"></ky-icon>
       <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
     </ng-container>
+  </div>
+  <div #child>
+    <app-task-row *ngFor="let child of task.child; index as i" [task]="child" (endEditRow)="addChildRow(i)"></app-task-row>
   </div>
 </div>
