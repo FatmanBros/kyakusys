@@ -28,17 +28,24 @@
 
     <!-- その他 -->
     <ng-container *ngIf="!edithing">
-      <div class="user-area">
-        <ky-icon class="icon inline-block" [icon]="icons.user_circle"></ky-icon>
-      </div>
+      <!-- フォークアイコン -->
       <div class="custom-area">
         <ky-icon *ngIf="!task.child || !task.child.length" class="icon inline-block" [icon]="icons.fork"
           (onClick)="onForkClick()"></ky-icon>
       </div>
+      <!-- ユーザーアイコン -->
+      <div class="user-area">
+        <ky-icon class="icon inline-block" [icon]="icons.user_circle"></ky-icon>
+      </div>
+      <!-- ステータスボタン -->
       <div class="custom-area">
         <ky-custom-radio class="inline-block" [buttons]="radioButtons"></ky-custom-radio>
       </div>
+
+      <!-- スペース -->
       <div class="space"></div>
+
+      <!-- 削除ボタン -->
       <div class="end-area">
         <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
       </div>
