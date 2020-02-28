@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { TaskTabParams, TaskContent } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-content',
@@ -53,5 +54,9 @@ export class TaskContentComponent implements OnInit {
 
   public onChildDelete(i) {
     this.tab.contents = this.tab.contents.filter((_, index) => index !== i);
+  }
+
+  public drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tab.contents, event.previousIndex, event.currentIndex);
   }
 }

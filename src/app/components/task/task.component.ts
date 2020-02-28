@@ -35,6 +35,8 @@ export class TaskComponent extends BaseComponent {
       default:
         break;
     }
+
+    this.detector.detectChanges();
   }
 
   constructor(

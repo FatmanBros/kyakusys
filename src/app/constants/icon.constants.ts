@@ -26,4 +26,10 @@ export class IconConstants {
 
   /** ユーザー（丸） */
   public static user_circle = ["far", "fa-user-circle"];
+
+  /** 飛行機 */
+  public static plane = ["fas", "fa-plane-departure"];
+
+  /** タスク */
+  public static task = ["fas", "fa-tasks"];
 }

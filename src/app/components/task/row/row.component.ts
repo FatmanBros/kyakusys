@@ -2,6 +2,7 @@ import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementR
 import { TaskContent } from 'src/app/params/task.params';
 import { IconConstants } from 'src/app/constants/icon.constants';
 import { TaskConstants } from 'src/app/constants/task.constants';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-row',
@@ -10,24 +11,15 @@ import { TaskConstants } from 'src/app/constants/task.constants';
 })
 export class TaskRowComponent implements OnInit, AfterViewInit {
 
-  public icons: typeof IconConstants = IconConstants;
+  public edithing: boolean = false;
 
-  public edithing: boolean = true;
+  public icons: typeof IconConstants = IconConstants;
 
   @Input()
   public nestedCount: number = 0;
 
   @Input()
   public task: TaskContent;
-
-  private _taskTitle: string;
-  public set taskTitle(val) {
-    this._taskTitle = val;
-    this.task.title = val;
-  }
-  public get taskTitle() {
-    return this._taskTitle;
-  }
 
   public radioButtons = [
     { label: "未着手", color: "#81ecec" },
@@ -45,15 +37,13 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!this.task) {
-      return;
-    }
-
     if (!this.task.title) {
-      return;
-    }
+      this.edithing = true;
+      this.detector.detectChanges();
 
-    this.edithing = false;
+      let input = this.element.nativeElement.querySelector('input');
+      input.focus();
+    }
   }
 
   @Output()
@@ -66,8 +56,6 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
       }
 
       this.endEditRow.emit();
-      
-      this.edithing = false;
     }
   }
 
@@ -79,12 +67,16 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
     input.focus();
   }
 
+  public onBlur() {
+    this.edithing = false;
+  }
+
   @ViewChild('child')
   public child: ElementRef;
 
   public onForkClick() {
     this.task.child = [TaskConstants.defaultTask];
- }
+  }
 
   public addChildRow(i) {
     if (i < this.task.child.length - 1) {
@@ -93,7 +85,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
     this.task.child.push(TaskConstants.defaultTask);
     this.detector.detectChanges();
-    
+
     this.selectLastRow();
   }
 
@@ -114,5 +106,9 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   public onChildDelete(i) {
     this.task.child = this.task.child.filter((_, index) => index !== i);
+  }
+  
+  public drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.task.child, event.previousIndex, event.currentIndex);
   }
 }

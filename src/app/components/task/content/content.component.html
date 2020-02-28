@@ -1,6 +1,6 @@
 <div class="contant-out-frame">
-  <div #content class="contant-frame">
-    <div *ngFor="let task of getRows(); index as i" class="node-frame">
+  <div #content cdkDropList class="contant-frame" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let task of getRows(); index as i" class="node-frame" cdkDrag>
       <app-task-row [task]="task" (endEditRow)="addRow(i)" (deleteOnClick)="onChildDelete(i)"></app-task-row>
     </div>
   </div>

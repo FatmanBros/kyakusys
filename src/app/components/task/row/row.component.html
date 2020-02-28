@@ -7,7 +7,7 @@
     <!-- エディットアイコン -->
     <div class="icon-area">
       <ng-container *ngIf="edithing">
-        <ky-icon *ngIf="taskTitle" class="icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
+        <ky-icon *ngIf="task.title" class="icon inline-block" [icon]="icons.close" (onClick)="edithing = false">
         </ky-icon>
       </ng-container>
       <ng-container *ngIf="!edithing">
@@ -18,11 +18,11 @@
     <!-- タスクタイトル -->
     <div class="task-area">
       <ng-container *ngIf="edithing">
-        <input [(ngModel)]="taskTitle" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
-          (keyup)="onKey($event)" />
+        <input [(ngModel)]="task.title" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
+          (keyup)="onKey($event)" (blur)="onBlur()" />
       </ng-container>
       <ng-container *ngIf="!edithing">
-        <p class="task inline-block">{{taskTitle}}</p>
+        <p class="task inline-block">{{task.title}}</p>
       </ng-container>
     </div>
 
@@ -50,8 +50,8 @@
       <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
     </div>
   </div>
-  <div #child>
+  <div #child cdkDropList (cdkDropListDropped)="drop($event)">
     <app-task-row *ngFor="let child of task.child; index as i" [task]="child" [nestedCount]="nestedCount + 1"
-      (endEditRow)="addChildRow(i)" (deleteOnClick)="onChildDelete(i)"></app-task-row>
+      (endEditRow)="addChildRow(i)" (deleteOnClick)="onChildDelete(i)" cdkDrag></app-task-row>
   </div>
 </div>
