@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ChangeDetectorRef, ViewChild, ElementRef } fr
 import { TaskTabParams, TaskContent } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ContentService } from 'src/app/service/app/content.service';
+import { TaskBoardComponent } from '../board/board.component';
 
 @Component({
   selector: 'app-task-content',
@@ -11,13 +13,15 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class TaskContentComponent implements OnInit {
 
   @ViewChild('content')
-  public content: ElementRef;  
+  public content: ElementRef;
 
   @Input()
   public tab: TaskTabParams;
 
   constructor(
-    private detector: ChangeDetectorRef
+    private detector: ChangeDetectorRef,
+    private contentService: ContentService,
+    private board: TaskBoardComponent,
   ) { }
 
   ngOnInit(): void {
@@ -35,21 +39,8 @@ export class TaskContentComponent implements OnInit {
     // 最後の行のときだけ追加
     if (i < this.tab.contents.length - 1) {
       return;
-    }  
+    }
     this.tab.contents.push(TaskConstants.defaultTask);
-
-    this.detector.detectChanges();
-
-    // 最後の行を選択
-    this.selectLastRow();
-  }
-
-  public selectLastRow() {
-    let tasks = this.content.nativeElement.querySelectorAll('app-task-row');
-    let lastItem = tasks[tasks.length - 1];
-
-    let task = lastItem.querySelector('input');
-    task.focus();
   }
 
   public onChildDelete(i) {

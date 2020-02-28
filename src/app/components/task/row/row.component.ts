@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output, EventEmitter, ElementRef, ViewChild, ChangeDetectorRef, Injector } from '@angular/core';
 import { TaskContent } from 'src/app/params/task.params';
 import { IconConstants } from 'src/app/constants/icon.constants';
 import { TaskConstants } from 'src/app/constants/task.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TaskBoardComponent } from '../board/board.component';
+import { ContentService } from 'src/app/service/app/content.service';
 
 @Component({
   selector: 'app-task-row',
@@ -14,6 +16,9 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   public edithing: boolean = false;
 
   public icons: typeof IconConstants = IconConstants;
+
+  @ViewChild('taskInput')
+  public taskInput;
 
   @Input()
   public nestedCount: number = 0;
@@ -31,19 +36,25 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   constructor(
     private element: ElementRef,
     private detector: ChangeDetectorRef,
-  ) { }
+    private contentService: ContentService,
+    private board: TaskBoardComponent,
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    if (!this.task.title) {
-      this.edithing = true;
-      this.detector.detectChanges();
-
-      let input = this.element.nativeElement.querySelector('input');
-      input.focus();
+    if (this.task.title) {
+      return;
     }
+    if (!this.contentService.isEqualsBoard(this.board.vi, this.board.hi)) {
+      return;
+    }
+
+    this.edithing = true;
+    this.detector.detectChanges();
+    this.taskInput.nativeElement.focus();
   }
 
   @Output()
@@ -54,7 +65,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
       if (!event.currentTarget.value) {
         return;
       }
-
+      this.edithing = false;
       this.endEditRow.emit();
     }
   }
@@ -65,6 +76,10 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
     let input = this.element.nativeElement.querySelector('input');
     input.focus();
+  }
+
+  public onFocus() {
+    this.contentService.setSelected(this.board.vi, this.board.hi);
   }
 
   public onBlur() {
@@ -84,19 +99,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
     }
 
     this.task.child.push(TaskConstants.defaultTask);
-    this.detector.detectChanges();
-
-    this.selectLastRow();
   }
-
-  public selectLastRow() {
-    let tasks = this.child.nativeElement.querySelectorAll('app-task-row');
-    let lastItem = tasks[tasks.length - 1];
-
-    let task = lastItem.querySelector('input');
-    task.focus();
-  }
-
 
   @Output()
   public deleteOnClick: EventEmitter<null> = new EventEmitter<null>();
@@ -107,7 +110,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   public onChildDelete(i) {
     this.task.child = this.task.child.filter((_, index) => index !== i);
   }
-  
+
   public drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.task.child, event.previousIndex, event.currentIndex);
   }

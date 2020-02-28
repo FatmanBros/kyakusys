@@ -18,8 +18,8 @@
     <!-- タスクタイトル -->
     <div class="task-area">
       <ng-container *ngIf="edithing">
-        <input [(ngModel)]="task.title" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
-          (keyup)="onKey($event)" (blur)="onBlur()" />
+        <input #taskInput [(ngModel)]="task.title" placeholder="テキストを入力して、Enterで追加" class="task-form inline-block"
+          (keyup)="onKey($event)" (blur)="onBlur()" (focus)="onFocus()" />
       </ng-container>
       <ng-container *ngIf="!edithing">
         <p class="task inline-block">{{task.title}}</p>

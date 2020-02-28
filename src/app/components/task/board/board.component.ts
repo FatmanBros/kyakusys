@@ -20,7 +20,15 @@ export class TaskBoardComponent implements OnInit {
   @Input()
   public tabs: TaskTabParams[];
 
-  constructor(private detecotr: ChangeDetectorRef) { }
+  @Input()
+  public vi: number;
+
+  @Input()
+  public hi: number;
+
+  constructor(
+    private detecotr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
   }
