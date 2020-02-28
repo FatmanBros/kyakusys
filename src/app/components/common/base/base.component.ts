@@ -1,4 +1,4 @@
-import { OnInit, AfterViewInit, Injector } from '@angular/core';
+import { OnInit, AfterViewInit, Injector, ChangeDetectorRef } from '@angular/core';
 import { AppService } from 'src/app/service/app/app.service';
 
 export abstract class BaseComponent implements OnInit, AfterViewInit {
@@ -7,10 +7,13 @@ export abstract class BaseComponent implements OnInit, AfterViewInit {
 
   public appService: AppService;
 
+  public detector: ChangeDetectorRef;
+
   constructor(
     public injector: Injector
   ) {
     this.appService = injector.get(AppService);
+    this.detector = injector.get(ChangeDetectorRef);
   }
 
   protected mainNgOnInit() {}

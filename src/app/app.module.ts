@@ -14,6 +14,7 @@ import { IconComponent } from './custom-component/icon/icon.component';
 import { CustomRadioComponent } from './custom-component/custom-radio/custom-radio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RangePipe } from './pipe/range.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RangePipe } from './pipe/range.pipe';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
