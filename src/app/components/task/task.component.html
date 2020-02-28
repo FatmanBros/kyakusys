@@ -2,7 +2,7 @@
   <div *ngFor="let v of splitVertical | range" class="vertical-frame flex-one">
     <div *ngFor="let v of splitHolizontal | range" class="task-out-frame flex-one">
       <div class="task-frame">
-        <app-task-board></app-task-board>
+        <app-task-board [tabs]="tabs"></app-task-board>
       </div>
     </div>
   </div>

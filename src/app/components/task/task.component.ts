@@ -1,5 +1,6 @@
 import { Component, OnInit, Injector, HostListener, Renderer2 } from '@angular/core';
 import { BaseComponent } from '../common/base/base.component';
+import { TaskTabParams } from 'src/app/params/task.params';
 
 @Component({
   selector: 'app-task',
@@ -7,6 +8,8 @@ import { BaseComponent } from '../common/base/base.component';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent extends BaseComponent {
+  
+  public tabs: TaskTabParams[] = [];
 
   public splitVertical: number = 1;
   public splitHolizontal: number = 1;
@@ -32,8 +35,6 @@ export class TaskComponent extends BaseComponent {
       default:
         break;
     }
-
-    this.detector.detectChanges();
   }
 
   constructor(

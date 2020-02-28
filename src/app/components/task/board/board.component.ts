@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { IconConstants } from 'src/app/constants/icon.constants';
 import { TaskTabParams } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
@@ -16,7 +16,8 @@ export class TaskBoardComponent implements OnInit {
   @ViewChild('matTab')
   public matTab: MatTabGroup;
 
-  public tabs: TaskTabParams[] = [];
+  @Input()
+  public tabs: TaskTabParams[];
 
   constructor(private detecotr: ChangeDetectorRef) { }
 
