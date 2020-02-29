@@ -83,7 +83,9 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   }
 
   public onBlur() {
-    this.edithing = false;
+    if (this.task.title) {
+      this.edithing = false;
+    }
   }
 
   @ViewChild('child')

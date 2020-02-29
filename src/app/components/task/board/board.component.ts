@@ -51,7 +51,7 @@ export class TaskBoardComponent implements OnInit {
 
     // タブ追加
     let newTab: TaskTabParams = new TaskTabParams();
-    newTab.contents = [TaskConstants.defaultTask];
+    newTab.contents = [];
 
     this.tabs.push(newTab);
     this.detecotr.detectChanges();

@@ -37,6 +37,12 @@ div {
   border: none;
 }
 
+.task-form:focus {
+  outline: none;
+  border-color: none;
+  box-shadow: none;
+}
+
 .icon {
   margin: 0 1rem;
 }

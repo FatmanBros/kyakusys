@@ -1,5 +1,8 @@
 export class IconConstants {
 
+  /** プラス */
+  public static plus = ["fas", "fa-plus"];
+
   /** プラス（四角） */
   public static plus_square = ["fa-plus-square", "fa"];
 
@@ -32,4 +35,7 @@ export class IconConstants {
 
   /** タスク */
   public static task = ["fas", "fa-tasks"];
+
+  /** リスト */
+  public static list = ["far", "fa-list-alt"];
 }
