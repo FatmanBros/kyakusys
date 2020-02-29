@@ -38,4 +38,7 @@ export class IconConstants {
 
   /** リスト */
   public static list = ["far", "fa-list-alt"];
+
+  /** 右三角 */
+  public static angule_right = ["fas", "fa-angle-right"];
 }

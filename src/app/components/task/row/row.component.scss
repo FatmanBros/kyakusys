@@ -1,5 +1,5 @@
 .row-frame {
-  background-color: white;
+  background-color: lighten(#d3e0e9, 10%);
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
   
   cursor: grab;
@@ -10,12 +10,12 @@
 }
 
 .row-frame:hover {
-  background-color: rgb(211, 241, 255) ;
+  background-color: darken(#d3e0e9, 1%);
   transition: 0.5s;
 }
 .row-frame.edithing {
   cursor: auto !important;
-  background-color: rgb(255, 253, 226) ;
+  background-color: #FDF9F0 ;
   transition: 0.5s;
 }
 
@@ -35,6 +35,7 @@ div {
   max-width: calc(100% - 1rem);
 
   border: none;
+  border-bottom: 1px solid #C3D5DE;
 }
 
 .task-form:focus {
