@@ -2,9 +2,13 @@
   background-color: white;
   filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.6));
   
-  cursor: move;
+  cursor: grab;
   transition: 0.5s;
 }
+.row-frame:active {
+  cursor: grabbing;
+}
+
 .row-frame:hover {
   background-color: rgb(211, 241, 255) ;
   transition: 0.5s;

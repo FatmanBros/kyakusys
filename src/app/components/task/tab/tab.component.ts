@@ -36,9 +36,7 @@ export class TaskTabComponent implements OnInit, AfterViewInit {
     if (!this.contentService.isEqualsBoard(this.board.vi, this.board.hi)) {
       return;
     }
-    this.titleEditing = true;
-    this.detector.detectChanges();
-    this.titleInput.nativeElement.focus();
+    this.resetTitle();
   }
 
   public titleEditing;
@@ -56,4 +54,10 @@ export class TaskTabComponent implements OnInit, AfterViewInit {
     this.titleEditing = false;
   }
 
+
+  public resetTitle() {
+    this.titleEditing = true;
+    this.detector.detectChanges();
+    this.titleInput.nativeElement.focus();
+  }
 }

@@ -1,3 +1,5 @@
+$transTime: 0.3s;
+
 .radio-button {
   margin-left: 1rem;
   border-radius: 0.2rem;
@@ -6,10 +8,10 @@
   cursor: pointer;
 
   opacity: 0.5;
-  transition: 0.2s;
+  transition: $transTime;
 }
 
 .radio-button.active {
   opacity: 1;
-  transition: 0.2s;
+  transition: $transTime;
 }

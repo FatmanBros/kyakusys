@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RangePipe } from './pipe/range.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TaskTabComponent } from './components/task/tab/tab.component';
+import { MdePopoverModule } from '@material-extended/mde';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { TaskTabComponent } from './components/task/tab/tab.component';
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    MdePopoverModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

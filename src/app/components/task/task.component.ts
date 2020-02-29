@@ -9,7 +9,7 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent extends BaseComponent {
-  
+
   public tabs: TaskTabParams[] = [];
 
   public splitVertical: number = 1;
@@ -20,21 +20,17 @@ export class TaskComponent extends BaseComponent {
     if (!event.shiftKey) {
       return;
     }
-    switch (event.key) {
-      case 'ArrowLeft':
-        this.splitHolizontal = this.splitHolizontal - 1 ? this.splitHolizontal - 1 : 1;
-        break;
-      case 'ArrowRight':
-        this.splitHolizontal++;
-        break;
-      case 'ArrowUp':
-        this.splitVertical = this.splitVertical - 1 ? this.splitVertical - 1 : 1;
-        break;
-      case 'ArrowDown':
-        this.splitVertical++;
-        break;
-      default:
-        break;
+    if (event.key === 'ArrowLeft') {
+      this.splitHolizontal = this.splitHolizontal - 1 > 0 ? this.splitHolizontal - 1 : 0;
+    }
+    if (event.key === 'ArrowRight') {
+      this.splitHolizontal++;
+    }
+    if (event.key === 'ArrowUp') {
+      this.splitVertical = this.splitVertical - 1 ? this.splitVertical - 1 : 1;
+    }
+    if (event.key === 'ArrowDown') {
+      this.splitVertical++;
     }
 
     this.detector.detectChanges();

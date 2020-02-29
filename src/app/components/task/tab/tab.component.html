@@ -2,5 +2,28 @@
   <input #titleInput *ngIf="titleEditing" class="title-input" [placeholder]="'Task Title'" [(ngModel)]="tab.title"
     (keydown)="confirmTitle($event)" (blur)="endEdit()" />
   <div *ngIf="!titleEditing" class="tab-title">{{ tab.title }}</div>
-  <ky-icon [icon]="icons.task" class="tool-icon"></ky-icon>
+  <ky-icon [icon]="icons.task" class="tool-icon" [mdePopoverTriggerFor]="menuPopover" mdePopoverTriggerOn="click"></ky-icon>
 </div>
+
+<!-- ポップオーバーメニュー -->
+<mde-popover #menuPopover>
+  <mat-card class="menu-frame">
+    <div class="contents-card" (click)="resetTitle()">タイトル変更</div>
+    <div class="contents-card" [mdePopoverTriggerFor]="changeIconPopover">アイコン変更</div>
+    <div class="contents-card" [mdePopoverTriggerFor]="changeColorPopover">テーマカラー変更</div>    
+  </mat-card>
+</mde-popover>
+
+<!-- アイコン変更 -->
+<mde-popover #changeIconPopover>
+  <mat-card class="menu-frame">
+    <div></div>
+  </mat-card>
+</mde-popover>
+
+<!-- 色変更 -->
+<mde-popover #changeColorPopover>
+  <mat-card class="menu-frame">
+    <div></div>
+  </mat-card>
+</mde-popover>

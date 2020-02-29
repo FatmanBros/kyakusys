@@ -7,10 +7,39 @@
 }
 
 .tab-title {
-  cursor: move;
+  cursor: grab;
+}
+
+.tab-title:active {
+  cursor: grabbing;
 }
 
 .tool-icon {
   margin: 0;
   margin-left: 0.5rem;
+}
+
+$backgroundColor: darken(#f5f8fa, 20%);
+.menu-frame {
+  padding: 0.5rem;
+  background-color: $backgroundColor;
+}
+
+/** タブメニュー */
+.contents-card {
+  margin: 0.2rem 0;
+  padding: 0.5rem;
+  
+  cursor: pointer;
+ 
+  background-color: $backgroundColor;
+  box-shadow: none;
+  border-radius: 0;
+  filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.6));
+
+
+}
+
+.contents-card:hover {
+  background-color: darken($backgroundColor, 20%);
 }

@@ -4,6 +4,7 @@ import { TaskConstants } from 'src/app/constants/task.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ContentService } from 'src/app/service/app/content.service';
 import { TaskBoardComponent } from '../board/board.component';
+import { IconConstants } from 'src/app/constants/icon.constants';
 
 @Component({
   selector: 'app-task-content',
@@ -11,6 +12,8 @@ import { TaskBoardComponent } from '../board/board.component';
   styleUrls: ['./content.component.scss']
 })
 export class TaskContentComponent implements OnInit {
+
+  public icons: typeof IconConstants = IconConstants;
 
   @ViewChild('content')
   public content: ElementRef;
@@ -40,6 +43,10 @@ export class TaskContentComponent implements OnInit {
     if (i < this.tab.contents.length - 1) {
       return;
     }
+    this.tab.contents.push(TaskConstants.defaultTask);
+  }
+
+  public pushRow() {
     this.tab.contents.push(TaskConstants.defaultTask);
   }
 
