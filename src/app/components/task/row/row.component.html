@@ -1,6 +1,7 @@
 <div class="row-frame" [ngClass]="{'edithing': edithing}">
   <div class="content-frame">
     <!-- ネスト表現 -->
+    <div class="nested"></div>
     <div class="nested" *ngFor="let n of nestedCount| range; index as i">
       <span style="font-size: 1.5rem;" *ngIf="i === (nestedCount - 1)">↳</span>
     </div>

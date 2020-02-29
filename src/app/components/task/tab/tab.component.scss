@@ -19,7 +19,8 @@
   margin-left: 0.5rem;
 }
 
-$backgroundColor: darken(#f5f8fa, 20%);
+$dark: 5%;
+$backgroundColor: darken(#f5f8fa, $dark);
 .menu-frame {
   padding: 0.5rem;
   background-color: $backgroundColor;
@@ -41,5 +42,5 @@ $backgroundColor: darken(#f5f8fa, 20%);
 }
 
 .contents-card:hover {
-  background-color: darken($backgroundColor, 20%);
+  background-color: darken($backgroundColor, $dark);
 }
