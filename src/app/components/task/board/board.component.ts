@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, Input, AfterViewInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { IconConstants } from 'src/app/constants/icon.constants';
 import { TaskTabParams } from 'src/app/params/task.params';
 import { TaskConstants } from 'src/app/constants/task.constants';
 import { MatTabGroup } from '@angular/material/tabs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ContentService } from 'src/app/service/app/content.service';
 
 @Component({
   selector: 'app-task-board',
@@ -27,7 +28,8 @@ export class TaskBoardComponent implements OnInit {
   public hi: number;
 
   constructor(
-    private detecotr: ChangeDetectorRef
+    private detecotr: ChangeDetectorRef,
+    private contentService: ContentService,
   ) { }
 
   ngOnInit(): void {
@@ -45,18 +47,24 @@ export class TaskBoardComponent implements OnInit {
   }
 
   public addTab() {
+    this.contentService.setSelected(this.vi, this.hi);
+
     // タブ追加
     let newTab: TaskTabParams = new TaskTabParams();
-    newTab.title = "New Tab";
     newTab.contents = [TaskConstants.defaultTask];
 
     this.tabs.push(newTab);
     this.detecotr.detectChanges();
   }
 
+  @Output()
+  public dropTab: EventEmitter<CdkDragDrop<string[]>> = new EventEmitter<CdkDragDrop<string[]>>();
+    
   public drop(event: CdkDragDrop<string[]>) {
-    const previousIndex = parseInt(event.previousContainer.id.replace('tab-', ''), 10);
-    const currentIndex = parseInt(event.container.id.replace('tab-', ''), 10);
-    moveItemInArray(this.tabs, previousIndex, currentIndex);
+    this.dropTab.emit(event);
+  }
+
+  public selectedTabChange(event) {
+    this.detecotr.detectChanges();
   }
 }

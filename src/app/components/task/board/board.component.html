@@ -1,19 +1,21 @@
 <div class="board-frame">
   <!-- タブ -->
   <ky-icon [icon]="icons.plus_circle" class="add-icon" (onClick)="addTab()"></ky-icon>
-  <mat-tab-group #matTab class="inline-block" cdkDropList>
+  <mat-tab-group #matTab class="inline-block" (selectedTabChange)="selectedTabChange($event)">
     <mat-tab *ngFor="let tab of tabs; index as i">
       <!-- タブヘッダー -->
       <ng-template mat-tab-label>
-        <div cdkDropList [id]="'tab-' + i" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="getAllListConnections(i)">
-          <div class="drag-box" cdkDrag>
-            <div>{{ tab.title }}</div>
-            <ky-icon [icon]="icons.task" class="add-icon"></ky-icon>
-          </div>
+        <div cdkDropList [id]="'tab-' + i" (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="getAllListConnections(i)">
+          <task-tab cdkDrag [tab]="tab"></task-tab>
         </div>
       </ng-template>
-      <!-- タブコンテンツ -->
-      <app-task-content [tab]="tab"></app-task-content>
+      <ng-template matTabContent>
+        <div class="tab-content-frame">
+          <!-- タブコンテンツ -->
+          <app-task-content [tab]="tab"></app-task-content>
+        </div>
+      </ng-template>
     </mat-tab>
   </mat-tab-group>
 </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Injector, HostListener, Renderer2 } from '@angular/core';
+import { Component, OnInit, Injector, HostListener, Renderer2, NgZone } from '@angular/core';
 import { BaseComponent } from '../common/base/base.component';
 import { TaskTabParams } from 'src/app/params/task.params';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task',
@@ -41,6 +42,7 @@ export class TaskComponent extends BaseComponent {
 
   constructor(
     injector: Injector,
+    private ngZone: NgZone,
   ) {
     super(injector);
   }
@@ -49,4 +51,14 @@ export class TaskComponent extends BaseComponent {
     this.screenTitle = "タスク管理";
   }
 
+  public sortTab(event) {
+    const previousIndex = parseInt(event.previousContainer.id.replace('tab-', ''), 10);
+    const currentIndex = parseInt(event.container.id.replace('tab-', ''), 10);
+
+    this.ngZone.run(() => {
+      moveItemInArray(this.tabs, previousIndex, currentIndex);
+    })
+
+    this.changeDetection();
+  }
 }

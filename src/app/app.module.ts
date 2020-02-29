@@ -15,6 +15,7 @@ import { CustomRadioComponent } from './custom-component/custom-radio/custom-rad
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RangePipe } from './pipe/range.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TaskTabComponent } from './components/task/tab/tab.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     IconComponent,
     CustomRadioComponent,
     RangePipe,
+    TaskTabComponent,
   ],
   imports: [
     BrowserModule,

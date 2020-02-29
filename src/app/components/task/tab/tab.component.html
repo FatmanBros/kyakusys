@@ -1,0 +1,6 @@
+<div class="tab-frame">
+  <input #titleInput *ngIf="titleEditing" class="title-input" [placeholder]="'Task Title'" [(ngModel)]="tab.title"
+    (keydown)="confirmTitle($event)" (blur)="endEdit()" />
+  <div *ngIf="!titleEditing" class="tab-title">{{ tab.title }}</div>
+  <ky-icon [icon]="icons.task" class="tool-icon"></ky-icon>
+</div>

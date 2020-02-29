@@ -2,7 +2,7 @@
   <div *ngFor="let v of splitVertical | range; index as vi" class="vertical-frame flex-one">
     <div *ngFor="let h of splitHolizontal | range; index as hi" class="task-out-frame flex-one">
       <div class="task-frame">
-        <app-task-board [tabs]="tabs" [vi]="vi" [hi]="hi"></app-task-board>
+        <app-task-board [tabs]="tabs" [vi]="vi" [hi]="hi" (dropTab)="sortTab($event)"></app-task-board>
       </div>
     </div>
   </div>

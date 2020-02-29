@@ -6,19 +6,25 @@
   flex-direction: column;
 }
 
+$headerHeight: 5rem;
 .header-frame {
-  height: 5rem;
+  display: flex;
+  height: $headerHeight;
 
   border-bottom: 1px solid #d3e0e9;
 }
 
 .body-frame {
   flex-grow: 1;
+  
+  height: calc(100% - #{$headerHeight});
+  max-height: calc(100% - #{$headerHeight});
 }
 
 .title-label {
   color: #aaa;
   font-size: 2.2rem;
-
   margin-left: 1rem;
+
+  align-self: center;
 }

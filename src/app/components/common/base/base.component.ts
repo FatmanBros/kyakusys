@@ -34,4 +34,8 @@ export abstract class BaseComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.mainNgAfterViewInit();
   }
+
+  public changeDetection() {
+    this.detector.detectChanges();
+  }
 }
