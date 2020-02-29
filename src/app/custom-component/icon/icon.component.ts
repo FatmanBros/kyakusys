@@ -19,6 +19,9 @@ export class IconComponent implements OnInit, AfterViewInit {
   @Input()
   public color: IconColor = IconColor.gray;
 
+  @Input()
+  public rotate: 'none' | '90' | '180' | '270' = 'none';
+
   public getClasses() {
     let classes = [];
     classes = classes.concat(this.icon);
@@ -29,6 +32,11 @@ export class IconComponent implements OnInit, AfterViewInit {
 
     if (!Validators.isNullOrLengthZero(this.onClick.observers)) {
       classes.push("pointer-icon");
+    }
+
+    // 回転を取得
+    if (this.rotate !== 'none') {
+      classes.push("rotate_" + this.rotate);
     }
 
     return classes;

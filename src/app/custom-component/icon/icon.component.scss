@@ -34,15 +34,32 @@ $large: 3rem;
   color: red;
 }
 
+$transTime: 0.3s;
 /**
  * アクティブ時の挙動
  */
 [class^="svg-inline"] {
   opacity: 0.5;
-  transition: 0.2s;
+  transform:rotate(0deg);
+  transition: $transTime;
 }
 
 [class^="svg-inline"]:hover {
   opacity: 0.8;
-  transition: 0.2s;
+  transition: $transTime;
+}
+
+[class^="svg-inline"].rotate_90 {
+  transform:rotate(90deg);
+  transition: $transTime;
+}
+
+[class^="svg-inline"].rotate_180 {
+  transform:rotate(180deg);
+  transition: $transTime;
+}
+
+[class^="svg-inline"].rotate_270 {
+  transform:rotate(270deg);
+  transition: $transTime;
 }

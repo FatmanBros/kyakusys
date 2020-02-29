@@ -18,9 +18,12 @@ export class IconConstants {
   /** フォーク */
   public static fork = ["fas", "fa-share-alt"];
 
+  /** ネスト */
+  public static nest = ["fas", "fa-network-wired"];
+
   /** バツ印 */
   public static cross = ["far", "fa-times-circle"];
-  
+
   /** ゴミ箱 */
   public static trash = ["fas", "fa-trash-alt"];
 
@@ -41,4 +44,7 @@ export class IconConstants {
 
   /** 右三角 */
   public static angule_right = ["fas", "fa-angle-right"];
+
+  /** 右三角（丸） */
+  public static circle_right = ["fas", "fa-chevron-circle-right"];
 }

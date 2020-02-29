@@ -5,11 +5,24 @@ import { TaskConstants } from 'src/app/constants/task.constants';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TaskBoardComponent } from '../board/board.component';
 import { ContentService } from 'src/app/service/app/content.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-task-row',
   templateUrl: './row.component.html',
-  styleUrls: ['./row.component.scss']
+  styleUrls: ['./row.component.scss'],
+  animations: [
+    trigger('accordion', [
+      transition(':enter', [
+        style({ height: '0', opacity: 0, overflow: 'hidden' }),
+        animate('200ms', style({ height: '*', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('200ms', style({ height: '0' }))
+      ])
+    ])
+  ],
 })
 export class TaskRowComponent implements OnInit, AfterViewInit {
 
@@ -25,6 +38,8 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   @Input()
   public task: TaskContent;
+
+  public showDetail: boolean = false;
 
   public radioButtons = [
     { label: "未着手", color: "#81ecec" },
@@ -93,6 +108,7 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
 
   public onForkClick() {
     this.task.child = [TaskConstants.defaultTask];
+    this.showDetail = true;
   }
 
   public addChildRow(i) {

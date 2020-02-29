@@ -1,9 +1,15 @@
 <div class="row-frame" [ngClass]="{'edithing': edithing}">
   <div class="content-frame">
     <!-- ネスト表現 -->
-    <div class="nested"></div>
-    <div class="nested" *ngFor="let n of nestedCount| range; index as i">
-      <span style="font-size: 1.5rem;" *ngIf="i === (nestedCount - 1)">↳</span>
+    <div class="nested" *ngFor="let n of nestedCount| range;"></div>
+    <!-- アコーディオン表現 -->
+    <div style="font-size: 1.5rem;">
+      <ky-icon *ngIf="task.child" class="icon inline-block" [icon]="icons.circle_right"
+        (onClick)="showDetail = !showDetail" [rotate]="showDetail ? '90':'none'">
+      </ky-icon>
+      <!-- フォークアイコン -->
+      <ky-icon *ngIf="!task.child" class="icon inline-block" [icon]="icons.fork"
+      (onClick)="onForkClick()"></ky-icon>
     </div>
     <!-- エディットアイコン -->
     <div class="icon-area">
@@ -29,11 +35,6 @@
 
     <!-- その他 -->
     <ng-container *ngIf="!edithing">
-      <!-- フォークアイコン -->
-      <div class="custom-area">
-        <ky-icon *ngIf="!task.child || !task.child.length" class="icon inline-block" [icon]="icons.fork"
-          (onClick)="onForkClick()"></ky-icon>
-      </div>
       <!-- ユーザーアイコン -->
       <div class="user-area">
         <ky-icon class="icon inline-block" [icon]="icons.user_circle" [size]="'middle'"></ky-icon>
@@ -51,8 +52,10 @@
       <ky-icon class="icon inline-block" [color]="'red'" [icon]="icons.trash" (onClick)="onDeleteClick()"></ky-icon>
     </div>
   </div>
-  <div #child cdkDropList (cdkDropListDropped)="drop($event)">
-    <app-task-row *ngFor="let child of task.child; index as i" [task]="child" [nestedCount]="nestedCount + 1"
-      (endEditRow)="addChildRow(i)" (deleteOnClick)="onChildDelete(i)" cdkDrag></app-task-row>
+  <div *ngIf="showDetail" [@accordion]>
+    <div #child cdkDropList (cdkDropListDropped)="drop($event)">
+      <app-task-row *ngFor="let child of task.child; index as i" [task]="child" [nestedCount]="nestedCount + 1"
+        (endEditRow)="addChildRow(i)" (deleteOnClick)="onChildDelete(i)" cdkDrag></app-task-row>
+    </div>
   </div>
 </div>
