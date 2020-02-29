@@ -11,20 +11,28 @@ export class CustomRadioComponent implements OnInit {
   public buttons: RadioParams[] = [];
 
   @Input()
-  public selectedIndex = 0;
+  public value: {status: string};
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public onClick(i: number) {
-    this.selectedIndex = i;
+  public activeClass(button: RadioParams) {
+    if (button.value === this.value.status) {
+      return "active";
+    }
+  }
+
+  public onClick(value) {
+    this.value.status = value;
   }
 }
 
 export class RadioParams {
   public label: string;
+
+  public value: string;
 
   public color: string;
 }

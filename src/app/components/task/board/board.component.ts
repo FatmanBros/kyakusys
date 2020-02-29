@@ -35,23 +35,23 @@ export class TaskBoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getAllListConnections(index) {
-    const connections: string[] = [];
-    for (let i = 0; i < this.tabs.length; i++) {
-      if (i !== index) {
-        connections.push('tab-' + i);
+  public getAllListConnections(id) {
+    let connection = this.tabs.map(tab => {
+      if (tab.id !== id) {
+        return "tab-" + tab.id
       }
-    }
-
-    return connections;
+    });
+    return connection;
   }
 
+  public id = 0;
   public addTab() {
     this.contentService.setSelected(this.vi, this.hi);
 
     // タブ追加
     let newTab: TaskTabParams = new TaskTabParams();
     newTab.contents = [];
+    newTab.id = this.id++;
 
     this.tabs.push(newTab);
     this.detecotr.detectChanges();
@@ -59,12 +59,24 @@ export class TaskBoardComponent implements OnInit {
 
   @Output()
   public dropTab: EventEmitter<CdkDragDrop<string[]>> = new EventEmitter<CdkDragDrop<string[]>>();
-    
+
   public drop(event: CdkDragDrop<string[]>) {
     this.dropTab.emit(event);
   }
 
-  public selectedTabChange(event) {
-    this.detecotr.detectChanges();
+  public deleteTab(id) {
+    let index = -1;
+    for (let i = 0; i < this.tabs.length; i++) {
+      if (this.tabs[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index < 0) {
+      return;
+    }
+
+    this.tabs.splice(index, 1);
   }
 }

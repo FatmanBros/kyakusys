@@ -42,10 +42,10 @@ export class TaskRowComponent implements OnInit, AfterViewInit {
   public showDetail: boolean = false;
 
   public radioButtons = [
-    { label: "未着手", color: "#81ecec" },
-    { label: "作業中", color: "#55efc4" },
-    { label: "待ち", color: "#fab1a0" },
-    { label: "完了", color: "#636e72" },
+    { label: "未着手", value: "0", color: "#81ecec" },
+    { label: "作業中", value: "1", color: "#55efc4" },
+    { label: "待ち", value: "2", color: "#fab1a0" },
+    { label: "完了", value: "3", color: "#636e72" },
   ];
 
   constructor(

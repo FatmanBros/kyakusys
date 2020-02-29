@@ -1,13 +1,13 @@
 <div class="board-frame">
   <!-- タブ -->
   <ky-icon [icon]="icons.plus_circle" class="add-icon" (onClick)="addTab()"></ky-icon>
-  <mat-tab-group #matTab class="inline-block" (selectedTabChange)="selectedTabChange($event)">
+  <mat-tab-group #matTab class="inline-block">
     <mat-tab *ngFor="let tab of tabs; index as i">
       <!-- タブヘッダー -->
       <ng-template mat-tab-label>
-        <div cdkDropList [id]="'tab-' + i" (cdkDropListDropped)="drop($event)"
-          [cdkDropListConnectedTo]="getAllListConnections(i)">
-          <task-tab cdkDrag [tab]="tab"></task-tab>
+        <div cdkDropList [id]="'tab-' + tab.id" (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="getAllListConnections(tab.id)">
+          <task-tab cdkDrag [tab]="tab" (delete)="deleteTab(tab.id)"></task-tab>
         </div>
       </ng-template>
       <ng-template matTabContent>

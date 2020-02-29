@@ -43,7 +43,7 @@ export class TaskContentComponent implements OnInit {
     if (i < this.tab.contents.length - 1) {
       return;
     }
-    this.tab.contents.push(TaskConstants.defaultTask);
+    this.pushRow();
   }
 
   public pushRow() {

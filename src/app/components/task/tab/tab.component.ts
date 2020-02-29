@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { TaskTabParams } from 'src/app/params/task.params';
 import { IconConstants } from 'src/app/constants/icon.constants';
 import { ContentService } from 'src/app/service/app/content.service';
@@ -59,5 +59,11 @@ export class TaskTabComponent implements OnInit, AfterViewInit {
     this.titleEditing = true;
     this.detector.detectChanges();
     this.titleInput.nativeElement.focus();
+  }
+
+  @Output()
+  public delete: EventEmitter<null> = new EventEmitter<null>();
+  public deleteTab() {
+    this.delete.emit();
   }
 }
